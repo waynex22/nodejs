@@ -3,8 +3,8 @@ const router = express.Router()
 const sitesController = require('../app/controllers/Sites.Controller')
 
 
-router.use('/contact', sitesController.contact)
-router.use('/', sitesController.home)
+router.get('/contact', sitesController.contact)
+router.get('/', sitesController.home)
 
 
 module.exports = router
