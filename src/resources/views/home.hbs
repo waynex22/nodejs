@@ -179,42 +179,26 @@
                     class="text-2xl p-4 text-start font-bold from-red-600 via-orange-500 to-orange-300 bg-gradient-to-r bg-clip-text text-transparent">
                     Sách nổi bật</h1>
             </div>
-            <div class="grid grid-cols-6 gap-6 mx-auto">
+            <div class="grid grid-cols-6 gap-6 mx-auto" data-te-animation-init data-te-animation-start="onLoad"
+                data-te-animation-reset="true" data-te-animation="[slide-in-right_1s_ease-in-out]">
                 {{#each books}}
                 <div class=" mt-4 mx-4 col-span-1">
                     <a href="/book/{{this._id}}" class=" mt-4 bg-white  rounded-lg  md:flex-row md:max-w-xl">
-                        <img class="object-cover object-center w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                        <img class="object-cover object-center w-full rounded-t-lg h-96 md:h-auto md:w-48 transition duration-300 ease-in-out hover:scale-110 md:rounded-none md:rounded-l-lg"
                             src="{{this.image}}" alt="{{this.title}}">
                         <div class="p-4">
                             <h5 class="mb-2 text-lg font-bold-light tracking-tight text-gray-600 h-12">{{this.title}}
                             </h5>
                             <div class="flex items-start justify-start mb-5">
+                                {{#each (sequenceAg this.average_score)}}
                                 <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                     <path
                                         d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                                 </svg>
-                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                    <path
-                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                    <path
-                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                    <path
-                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <svg class="w-4 h-4 text-gray-300 mr-1 dark:text-gray-500" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                    <path
-                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">(0)</p>
+                                {{/each}}
+                                <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+                                    ({{this.review_count}})</p>
                             </div>
                         </div>
                     </a>
@@ -222,6 +206,8 @@
                 {{/each}}
             </div>
         </div>
+        <hr
+            class="my-12 h-0.5 border-t-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-100 dark:opacity-50" />
         <div class="bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg w-full h-fit overflow-hidden mt-4 ">
             <div class="flex justify-start items-center bg-red-100">
                 <img class="ml-2 center h-[30px]"
@@ -230,42 +216,26 @@
                     class="text-2xl p-4 text-start font-bold from-red-600 via-orange-500 to-orange-300 bg-gradient-to-r bg-clip-text text-transparent">
                     Tiểu thuyết</h1>
             </div>
-            <div class="grid grid-cols-6 gap-6 mx-auto">
+            <div class="grid grid-cols-6 gap-6 mx-auto" data-te-animation-init data-te-animation-start="onScroll"
+                data-te-animation-reset="true" data-te-animation="[slide-in-left_1s_ease-in-out]">
                 {{#each books}}
                 <div class=" mt-4 mx-4 col-span-1">
                     <a href="/book/{{this._id}}" class=" mt-4 bg-white  rounded-lg  md:flex-row md:max-w-xl">
-                        <img class="object-cover object-center w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                        <img class="object-cover object-center w-full transition duration-300 ease-in-out hover:scale-110 rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
                             src="{{this.image}}" alt="{{this.title}}">
                         <div class="p-4">
                             <h5 class="mb-2 text-lg font-bold-light tracking-tight text-gray-600 h-12">{{this.title}}
                             </h5>
                             <div class="flex items-start justify-start mb-5">
+                                {{#each (sequenceAg this.average_score)}}
                                 <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                     <path
                                         d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                                 </svg>
-                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                    <path
-                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                    <path
-                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                    <path
-                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <svg class="w-4 h-4 text-gray-300 mr-1 dark:text-gray-500" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                    <path
-                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">(0)</p>
+                                {{/each}}
+                                <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+                                    ({{this.review_count}})</p>
                             </div>
                         </div>
                     </a>
@@ -273,4 +243,7 @@
                 {{/each}}
             </div>
         </div>
+        <hr
+            class="my-12 h-0.5 border-t-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-100 dark:opacity-50" />
+
     </div>

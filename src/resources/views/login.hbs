@@ -6,11 +6,6 @@
         <img src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="w-full"
           alt="Sample image" />
       </div>
-{{!-- {{#if message}}
-  <div class="bg-green-400 border-l-4 border-green-500 p-4 mb-4">
-    <p class="text-white">{{message}}</p>
-  </div>
-{{/if}} --}}
       <!-- Right column container -->
       <div class="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
         <form method="POST" action="/account/postLogin">
@@ -59,12 +54,11 @@
               Hoặc
             </p>
           </div>
-          {{#if message}}
-          <div class="bg-green-400 border-l-4 border-green-500 p-4 mb-4">
-            <p class="text-white">{{message}}</p>
-          </div>
-          {{/if}}
-          <!-- Email input -->
+           {{#if message}}
+      <div class="bg-red-600 border-l-4 border-red-400 p-4 mb-4">
+        <p class="text-white">{{message}}</p>
+      </div>
+      {{/if}}
           <div class="relative mb-6" data-te-input-wrapper-init>
             <input type="text"
               class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"

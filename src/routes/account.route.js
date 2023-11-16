@@ -7,10 +7,6 @@ router.use('/register', accountsController.register)
 router.use('/login', accountsController.login)
 router.post('/registerAccount' , accountsController.postRegiter)
 router.post('/postLogin' , accountsController.postLogin)
-// passport.authenticate('', {
-//     successRedirect: '/',
-//     failureRedirect: '/account/login',
-//     failureFlash: true
-//    }), 
+router.post('/logout' , accountsController.postLogOut)
 
 module.exports = router

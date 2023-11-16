@@ -4,17 +4,23 @@ class SitesController {
     // get /home
     home(req, res, next) {
         // res.render('home')
+        const user = req.session.user ? req.session.user : null
         Book.find({})
             .then(books => {
                 res.render('home', {
                     books: toObjects(books),
+                    user: user,
                 })
             })
             .catch(next)
 
     }
     contact(req, res) {
-        res.render('contact')
+        const user = req.session.user ? req.session.user : null
+        res.render('contact',
+        {
+            user : user
+        })
     }
 }
 

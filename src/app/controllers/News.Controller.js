@@ -1,7 +1,8 @@
 class NewsController {
     // get /news
     index(req , res){
-        res.render('news')
+        const user = req.session.user ? req.session.user : null
+        res.render('news', {user: user})
     }
     show(req , res){
         res.send('detail')

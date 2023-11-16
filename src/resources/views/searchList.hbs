@@ -2,15 +2,16 @@
     <section class="mb-32 text-center lg:text-left" data-te-animation-init data-te-animation-start="onLoad"
         data-te-animation-reset="true" data-te-animation="[fade-in-up_1s_ease-in-out]">
         <h2 class="mb-12 text-center text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-red-700 to-orange-500">
-            Thư Viện Sách
+            Kết quả tìm kiếm  : {{find}}
         </h2>
+        {{#if result.length}}
         <div class="grid gap-x-6 grid-cols-4">
-            {{#each books}}
+            {{#each result}}
             <div class="mb-12 lg:mb-0">
                 <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
                     data-te-ripple-init data-te-ripple-color="light">
                     <img src="{{this.image}}" class="w-full transition duration-300 ease-in-out hover:scale-110" />
-                    <a href="/book/{{this._id}}">
+                    <a href="/book/{{_id}}">
                         <div
                             class="mask absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,0.2)]">
                         </div>
@@ -34,8 +35,17 @@
             </div>
             {{/each}}
         </div>
-
     </section>
+    {{else}}
+    <div class="flex items-center justify-center">
+        <div class="text-center">
+            <img src="https://sayrug.co.uk/bitrix/templates/mav/images/no-product.png" alt="Not Found Image" class="mx-auto mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Không Tìm Thấy Sản Phẩm</h1>
+            <p class="text-gray-600">Rất tiếc, chúng tôi không thể tìm thấy sản phẩm bạn đang tìm kiếm.</p>
+            <a href="/" class="text-blue-500 hover:underline">Quay lại trang chủ</a>
+        </div>
+    </div>
+{{/if}}
     <!-- Section: Design Block -->
 </div>
 <!-- Container for demo purpose -->

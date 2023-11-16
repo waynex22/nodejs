@@ -4,7 +4,11 @@ const bcrypt = require('bcrypt');
 class AccountsController {
     // get /login
     login(req, res) {
-
+        const user = req.session.user ? req.session.user : null
+        req.session.returnTo = req.headers.referer || '/'
+        if(user){
+            res.redirect('/')
+        }
         res.render('login', { message: req.flash('message') })
     }
     register(req, res) {
@@ -37,42 +41,31 @@ class AccountsController {
             res.redirect('/account/login')
         }
         else {
-            const pass = toObject(user).password
-            res.json(bcrypt.compare(pass))
+            const password = req.body.password
+            const userPassword = user.password
+            const passwordHash = await bcrypt.compare(password , userPassword)
+                if(passwordHash){
+                    req.session.user = {
+                        id: user._id,
+                        name: user.name,
+                        role: user.role,
+                    }
+                    const returnTo = req.session.returnTo || '/'
+                    res.redirect(returnTo)
+                }else {
+                    req.flash('message', 'Sai mật khẩu')
+                    res.redirect('/account/login')
+                }
+            
         }
-        // res.json(user)
-        // passport.use( new LocalStrategy({
-        //     nameField: 'name',
-        //     passwordField: 'password'
-        //    },(name, password, done) => {
-        //     Account.findOne({name: name}, (err, user) => {
-        //       if(err){
-        //         return done(err)
-        //       }
-        //       if(!user){
-        //         return done(null , false, {message: res.flash('Incorect username')})
-        //       }
-        //       try{
-        //         if(bcrypt.compare(password , user.password)){
-        //           return done(null, user)
-        //         }else {
-        //           return done(null, false, {message: res.flash('Incorect password')})
-        //         }
-
-        //       }catch(e){
-        //         return  done(e)
-        //       }
-        //     })
-        //    }))
-        //    passport.serializeUser((user, done) => {
-        //     done(null, user.id)
-        //    })
-        //    passport.deserializeUser((id , user) => {
-        //     Account.findById(id, (err, user) => {
-        //       done(err, user)
-        //     })
-        //    })
-        // res.send('login success')
+    }
+    postLogOut(req, res){
+        req.session.destroy((err) => {
+            if(err){
+                console.log('destroy err session', err)
+            }
+            res.redirect('/account/login')
+        })
     }
 }
 module.exports = new AccountsController;
