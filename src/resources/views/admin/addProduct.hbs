@@ -1,0 +1,84 @@
+<div class='container mx-auto py-8'>
+    <h1 class="mb-4 text-3xl font-extrabold text-gray-900  md:text-5xl lg:text-4xl"><span
+            class="text-transparent bg-clip-text bg-gradient-to-l to-red-600 from-sky-400">Thêm sản phẩm</span> </h1>
+    <form method="post" action="/admin/product/addNew"  enctype="multipart/form-data" class='mb-8'>
+        <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
+            <div class="w-full">
+                <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Tên sản phẩm</label>
+                <input type="text" id="title" name="title"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="Tên sản phẩm" required="" />
+            </div>
+            <div class="w-full">
+                <label for="author" class="block mb-2 text-sm font-medium text-gray-900">Tác giả</label>
+                <input type="text" id="author" name="author"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="Tác giả" required="" />
+            </div>
+
+            <div class="w-full">
+                <label for="image" class="block mb-2 text-sm font-medium text-gray-900">Ảnh bìa</label>
+                <input type="file" id="image" name="image"
+                    class="bg-gray-50 border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    required="" onchange="previewImage(this)" />
+                <img id="image-preview" class="mt-2 w-[130px] h-[200px]" style="max-width: 100%" alt="Ảnh" />
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label for="year" class="block mb-2 text-sm font-medium text-gray-900 ">Năm xuất bản</label>
+            <input type='text' id='year' name='year'
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                placeholder="" required="" />
+        </div>
+        <div class="w-full">
+            <label for="isbn" class="block mb-2 text-sm font-medium text-gray-900 ">Số isbn</label>
+            <input type='text' id='isbn' name='isbn'
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                placeholder="7323..." required="" />
+        </div>
+        <div class="sm:col-span-2">
+            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Mô tả</label>
+            <textarea id='description' name='description' rows="8"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
+                placeholder="Write a product description here..."></textarea>
+        </div>
+</div>
+<button type='sumit' class="px-5 py-2.5 relative rounded group text-white font-medium inline-block">
+    <span
+        class="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-red-600 to-blue-500"></span>
+    <span
+        class="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-red-600 to-blue-500"></span>
+    <span
+        class="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-red-600 to-blue-500"></span>
+    <span
+        class="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-red-600 from-blue-500"></span>
+    <span class="relative">Thêm</span>
+</button>
+</form>
+<a to='/Admin/Product' class="px-5 py-2.5 relative rounded group text-white font-medium inline-block">
+    <span
+        class="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-red-600 to-blue-500"></span>
+    <span
+        class="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-red-600 to-blue-500"></span>
+    <span
+        class="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-red-600 to-blue-500"></span>
+    <span
+        class="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-red-600 from-blue-500"></span>
+    <span class="relative">quay lại</span>
+</a>
+</div>
+<script>
+    function previewImage(input) {
+        const preview = document.getElementById('image-preview');
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = '';
+        }
+    }
+</script>

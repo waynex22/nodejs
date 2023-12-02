@@ -36,7 +36,7 @@ class DetailBook {
             .then(existingComment => {
                 if (existingComment) {
                     req.flash('error', 'Bạn chỉ có thể bình luận 1 lần !!!')
-                    // console.log('Flash Message:', req.flash('error'));
+                    // console.log('Flash Message:', req.flash('error'))
                     res.redirect(`/book/${id_book}`)
                 } else {
                     comment.save()

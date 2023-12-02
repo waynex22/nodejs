@@ -1,0 +1,58 @@
+<div class='container mx-auto py-8'>
+    <h1 class="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-4xl"><span
+            class="text-transparent bg-clip-text bg-gradient-to-l to-red-400 from-sky-400">Bình Luận</span></h1>
+    <div className='mb-8'>
+        
+    </div>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        id
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Tên sách
+                    </th>
+                    <th scope="col" class="px-2 py-3">
+                        Hình ảnh
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Số Bình luận
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Số điểm
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Chi tiết
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each books}}
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{this._id}}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{this.title}}
+                    </td>
+                    <td class="px-6 py-4">
+                        <img class='w-[60px] h-[60px] overflow-hidden  duration-300' src="/uploads/{{this.image}}" />
+                    </td>
+                    <td class="px-6 py-4">
+                        {{this.review_count}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{this.average_score}}
+                    </td>
+                    <td class="px-6 py-4 flex justify-between items-center mt-4">
+                        <a href="/admin/comment/detail/{{this._id}}"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Chi tiết</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
